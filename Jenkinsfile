@@ -15,10 +15,17 @@ pipeline {
         
         stage('Initialize') {
             steps {
-                def dockerHome = tool 'myDocker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
+                script {
+                    def dockerHome = tool 'myDocker'
+                    if (dockerHome == null) {
+                        error("Docker tool 'myDocker' not found.")
+                    }
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    echo "Updated PATH: ${env.PATH}"
+                }
             }
         }
+
 
         stage('Build Docker Image') {
             steps {
