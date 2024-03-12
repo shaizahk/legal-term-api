@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: legal-api
-        image: shaizah56/legal-api:latest
+        image: IMAGE_NAME_PLACEHOLDER:TAG_PLACEHOLDER
         ports:
         - containerPort: 8000
         resources:
