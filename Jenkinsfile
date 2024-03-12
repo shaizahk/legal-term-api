@@ -5,8 +5,6 @@ pipeline {
     PROPERTIES = readProperties file: 'config/docker.properties'
     DOCKER_IMAGE = "${PROPERTIES.DOCKER_IMAGE}"
     DOCKER_TAG = "${PROPERTIES.DOCKER_TAG}"
-    DOCKER_REGISTRY_URL = credentials('docker_registry_url')
-    DOCKER_REGISTRY_CREDENTIALS = credentials('docker-registry-credentials')
     }
     
     stages {
@@ -44,7 +42,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("${DOCKER_REGISTRY_URL}", "${DOCKER_REGISTRY_CREDENTIALS}") {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-registry-credentials') {
                         docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                     }
                 }
