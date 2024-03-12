@@ -19,7 +19,7 @@ spec:
         - containerPort: 8000
         resources:
           limits:
-            memory: "1Gi"  # Set memory limit to 1 gigabyte
+            memory: "2Gi"  # Set memory limit to 1 gigabyte
             cpu: "0.5"     # Set CPU limit to 0.5 cores
           requests:
             memory: "512Mi"  # Set memory request to 512 megabytes
