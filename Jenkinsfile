@@ -52,7 +52,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl apply -f deployment.yaml'
+                    sh 'kubectl apply -f deployment.yaml -f service.yaml'
                 }
             }
         }
@@ -61,7 +61,6 @@ pipeline {
         failure {
             script {
                 echo 'A stage has failed. Executing cleanup and rollback...'
-                // Rollback Kubernetes deployment
                 sh 'kubectl rollout undo deployment/legal-api'
             }
         }
