@@ -56,5 +56,15 @@ pipeline {
                 }
             }
         }
+
+     post {
+         failure {
+             script {
+                 echo 'A stage has failed. Executing cleanup and rollback...'
+                 // Rollback Kubernetes deployment
+                 sh 'kubectl rollout undo deployment/legal-api'
+            }
+        }
+    }
     }
 }
