@@ -12,6 +12,15 @@ pipeline {
                 checkout scm
             }
         }
+
+    stage('Run Tests') {
+        steps {
+            script {
+                // Assuming Python and required dependencies are installed on the agent
+                sh 'python -m unittest discover -s tests -p "*_test.py"'
+            }
+        }
+    }
         
         stage('Build Docker Image') {
             steps {
