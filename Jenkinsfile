@@ -16,7 +16,7 @@ pipeline {
     stage('Run Tests') {
         steps {
             script {
-                sh 'python src/test_loading.py'
+                sh 'python tests/test_loading.py'
             }
         }
     }
