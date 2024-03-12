@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'shaizah56/legal-api'
-        DOCKER_TAG = 'latest'
+    PROPERTIES = readProperties file: 'config/docker.properties'
+    DOCKER_IMAGE = "${PROPERTIES.DOCKER_IMAGE}"
+    DOCKER_TAG = "${PROPERTIES.DOCKER_TAG}"
     }
-
+    
     stages {
         stage('Checkout') {
             steps {
