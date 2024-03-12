@@ -34,8 +34,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'kubeconfig-credentials-id', context: 'docker-desktop']) {
-                        sh 'kubectl apply -f k8s/deployment.yaml'
+                    sh 'kubectl apply -f path/to/your/deployment.yaml'
                     }
                 }
             }
