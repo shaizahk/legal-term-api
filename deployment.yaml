@@ -24,16 +24,3 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: legal-api-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: legal-api
-  ports:
-  - protocol: TCP
-    port: 8000
-    targetPort: 8000
