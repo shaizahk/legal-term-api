@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: legal-term-api
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: legal-api
@@ -17,6 +17,14 @@ spec:
         image: shaizah56/legal-api:latest
         ports:
         - containerPort: 8000
+        resources:
+          limits:
+            memory: "1Gi"  # Set memory limit to 1 gigabyte
+            cpu: "0.5"     # Set CPU limit to 0.5 cores
+          requests:
+            memory: "512Mi"  # Set memory request to 512 megabytes
+            cpu: "0.1"       # Set CPU request to 0.1 cores
+
 ---
 apiVersion: v1
 kind: Service
