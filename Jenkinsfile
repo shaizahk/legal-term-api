@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'shaizah56/legal-api:latest'
+        DOCKER_IMAGE = 'shaizah56/legal-api'
         DOCKER_TAG = 'latest'
     }
 
