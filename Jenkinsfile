@@ -62,8 +62,7 @@ pipeline {
             script {
                 echo 'A stage has failed. Executing cleanup and rollback...'
                 // Rollback Kubernetes deployment
-                sh 'kubectl rollout undo deployment/your-deployment-name'
-                // Additional cleanup actions
+                sh 'kubectl rollout undo deployment/legal-api'
             }
         }
     }
