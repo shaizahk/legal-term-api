@@ -24,7 +24,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'docker-registry-credentials', context: 'docker-desktop') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-registry-credentials') {
                         docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                     }
                 }
@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'kubeconfig-credentials-id']) {
+                    withKubeConfig([credentialsId: 'kubeconfig-credentials-id', context: 'docker-desktop']) {
                         sh 'kubectl apply -f k8s/deployment.yaml'
                     }
                 }
