@@ -24,7 +24,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('shaizah56/legal-api', 'docker-registry-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-registry-credentials') {
                         docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                     }
                 }
