@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl apply -f path/to/your/deployment.yaml'
+                    sh 'kubectl apply -f deployment.yaml'
                     }
                 }
             }
