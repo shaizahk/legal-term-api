@@ -33,8 +33,8 @@ pipeline {
          stage('Update Deployment Manifest') {
              steps {
                  script {
-                     sh "sed -i 's|IMAGE_NAME_PLACEHOLDER|${DOCKER_IMAGE}|g' deployment.yaml"
-                     sh "sed -i 's|TAG_PLACEHOLDER|${DOCKER_TAG}|g' deployment.yaml"
+                     sh "sed -i '' 's|IMAGE_NAME_PLACEHOLDER|${DOCKER_IMAGE}|g' deployment.yaml"
+                     sh "sed -i '' 's|TAG_PLACEHOLDER|${DOCKER_TAG}|g' deployment.yaml"
                  }
              }
          }
